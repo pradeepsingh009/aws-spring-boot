@@ -1,5 +1,7 @@
 package com.saini.awsexpo.rest;
 
+import java.io.File;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +19,11 @@ public class S3Controller {
 	@GetMapping("/upload-file")
 	public String uploadFile() {
 		
-		System.out.println(this.storageService.getFileStorageClient().getClass().getName());
-		System.exit(0);
-		return null;
+		File file = new File("/home/pradeep/Pictures/logout.png");
+		storageService.create(file,"/assets");
+		
+//		System.out.println(this.storageService.getFileStorageClient().getClass().getName());
+//		System.exit(0);
+		return "file uploaded";
 	}
 }
