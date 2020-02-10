@@ -4,7 +4,7 @@ import java.io.File;
 
 public interface FileStorage {
 
-	public boolean create();
+	public boolean create(File file,String filePath);
 	
 	public File get(String relativePath);
 	
