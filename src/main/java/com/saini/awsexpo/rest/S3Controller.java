@@ -19,11 +19,16 @@ public class S3Controller {
 	@GetMapping("/upload-file")
 	public String uploadFile() {
 		
-		File file = new File("/home/pradeep/Pictures/logout.png");
-		storageService.create(file,"/assets");
+		File file = new File("D:/wallpapers/1.jpg");
+		System.out.println(file.exists());
+		System.out.println(file.length());
+		String filePath = "newassets/bmw1000.jpg";
+		storageService.create(file,filePath);
+		
+		String link = "<a href='"+storageService.getAbsoluteFilePath(filePath)+"'>click to open</a>";
 		
 //		System.out.println(this.storageService.getFileStorageClient().getClass().getName());
 //		System.exit(0);
-		return "file uploaded";
+		return "file uploaded at:"+link;
 	}
 }
